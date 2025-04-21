@@ -30,7 +30,7 @@ uv sync
 Train the Augmented Potts model with the entrypoint script:
 
 ```
->>> uv run python src/augmented_potts/run.py --help
+$ python src/augmented_potts/run.py --help
 Usage: run.py [OPTIONS] DATA_PATH TARGET
 
 ╭─ Arguments ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
