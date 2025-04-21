@@ -98,13 +98,14 @@ class AugmentedPotts:
         self.msa_path = msa_path
         self.encoder = encoder
         self.alpha = alpha
-        if msa_path is not None:
-            logger.info("Running Gremlin locally and saving emission parameters")
-            self.potts_model = PottsModel()
-            self.potts_model.run_gremlin(msa_path=self.msa_path)
-        elif self.potts_path is not None:
+        logger.info("Running Gremlin locally and saving emission parameters")
+        self.potts_model = PottsModel()
+        self.potts_model.run_gremlin(msa_path=self.msa_path)
+        if self.potts_path is not None:
             logger.info(f"Loading Potts model locally from: {self.potts_path}")
             self.potts_model = PottsModel.load(self.potts_path)
+        elif msa_path is None:
+            raise ValueError(f"No path to either Potts emissions or an MSA provided!")
         self.top_model = Ridge(alpha=self.alpha)
 
     def fit(self, data: pd.DataFrame, target: str) -> None:
