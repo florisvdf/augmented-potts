@@ -53,7 +53,7 @@ Or import `AugmentedPotts` and train the model in your own script:
 from augmented_potts.model import AugmentedPotts
 
 
-model = AugmentedPotts()
+model = AugmentedPotts(msa_path=my_msa_path)
 model.fit(data=my_dataframe, target=my_target)
 ```
 
